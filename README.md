@@ -28,3 +28,4 @@ skin_group_list_item_normal.9.png--需要添加--create_discussion_avatar_add.pn
 
 主进程中依据uin获取头像方式：app.getFaceDrawable(member.uin)
 物联进程中依据uin获取头像方式：DeviceUtils.getFaceBitmapFromQQ(app, member.uin)
+![alt tag](https://github.com/dj3009dj/mobile-interprocess-communication/blob/master/pic.png)
