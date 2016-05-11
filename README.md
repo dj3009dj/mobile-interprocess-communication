@@ -16,15 +16,15 @@ SmartHardwareActivity中修改，删除、全部、转让改为主进程跳转�
 
 将删除、全部、转让成员页面放到移动至物联的包中--com.tencent.device.activities
 
-将select_member_searchbar_background.xml移动至物联的layout中。添加select_member_searchbar_background.xml、skin_group_list_item_normal.9.png
-和create_discussion_avatar_add.png和skin_searchbar_icon.png。
-
-修改custom_commen_title.xml，添加右边按钮。添加top_button_right_selector.xml和skin_header_btn_disable.9.png和skin_header_btn_press.9.png和
-skin_header_btn_normal.9.png
+将device_select_member_character_divided_listview.xml移动至物联的layout中--需要添加--select_member_searchbar_background.xml--需要添加
+skin_group_list_item_normal.9.png--需要添加--create_discussion_avatar_add.png和skin_searchbar_icon.png。
 
 将authority_chooser_item.xml移动至物联的layout中。
 
-测试中发现，逻辑移动到物联进程时，积累DeviceAuthorityChooser.java不能再继承BaseActivity了，由于该类是主进程的，所以需要继承QQSmartDevice
-BaseActivity，继承这个Activity时，又遇到问题了。这个Activity本身就设置了titlebar和titlebar的点击事件，所以要把之前写得titlebar和点击事件
-删除。很麻烦。
+这里注意的是：在PluginIphoneTitleBarActivity中，默认的title左边是：“<返回”，当设置setLeftButton时，箭头“<”是消失的。
 
+
+测试中发现，逻辑移动到物联进程时，积累DeviceAuthorityChooser.java不能再继承BaseActivity了，由于该类是主进程的，所以需要继承QQSmartDeviceBaseActivity，继承这个Activity时，又遇到问题了。这个Activity本身就设置了titlebar和titlebar的点击事件，所以要把之前写得titlebar和点击事件删除。很麻烦。
+
+主进程中依据uin获取头像方式：app.getFaceDrawable(member.uin)
+物联进程中依据uin获取头像方式：DeviceUtils.getFaceBitmapFromQQ(app, member.uin)
